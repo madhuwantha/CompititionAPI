@@ -17,7 +17,7 @@ exports.createMarkPoint = (req,res,next)=>{
         .then((result)=>{
             res.status(200).json({
                 "status": "ok",
-                "markpoint": result
+                "id": result.id
             })
         }).catch(error =>{
             res.status(500).json({
@@ -30,10 +30,17 @@ exports.createMarkPoint = (req,res,next)=>{
 
 exports.getMarkPoints = (req,res,next)=>{
     collection.get()
-    .then(markpoint=>{
-        if(markpoint){
+    .then(markpoints=>{
+        if(markpoints){
+            let a = [];
+            markpoints.forEach(markpoint=>{
+                a.push({
+                    id: markpoint.id,
+                    data: markpoint.data()
+                })
+            })
             res.status(200).json({
-                markpoints: markpoint
+                markpoints: a
             })
         }else{
             res.status(404).json({
@@ -48,3 +55,26 @@ exports.getMarkPoints = (req,res,next)=>{
 }
 
 
+
+exports.getMarkPointsOfRound = (req,res,next)=>{
+    let doc = req.params.doc;
+    let mp = collection.doc(doc);
+
+    mp.get()
+    .then(markpoint=>{
+        if(usmarkpointer){
+            res.status(200).json({
+                id: markpoint.id,
+                data: markpoint.data()
+            })
+        }else{
+            res.status(404).json({
+                status: "MarkPoint not found"
+            })
+        }
+    }).catch(error =>{
+        res.status(500).json({
+            status: "Fetching MarkPoint failed!"+err
+        })
+    })
+}

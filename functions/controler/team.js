@@ -17,7 +17,7 @@ exports.createTeam = (req,res,next)=>{
         .then((result)=>{
             res.status(200).json({
                 "status": "ok",
-                "team": result
+                "id": result.id
             })
         }).catch(error =>{
             res.status(500).json({
@@ -32,8 +32,15 @@ exports.getTeams = (req,res,next)=>{
     collection.get()
     .then(teams=>{
         if(teams){
+            let a = [];
+            teams.forEach(team=>{
+                a.push({
+                    id: team.id,
+                    data: team.data()
+                })
+            })
             res.status(200).json({
-                teams: teams
+                teams: a
             })
         }else{
             res.status(404).json({

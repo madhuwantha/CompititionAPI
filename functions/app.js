@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var teamsRouter = require('./routes/team');
 var roundRouter = require('./routes/round');
 var markPointRouter = require('./routes/markPoint');
+var memberRouter = require('./routes/member');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 app.use('/teams', teamsRouter);
 app.use('/rounds',roundRouter);
 app.use('/markpoints',markPointRouter);
+app.use('/members',memberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

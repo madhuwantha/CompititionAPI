@@ -14,7 +14,6 @@ exports.createUser = (req,res,next)=>{
         .then((result)=>{
             res.status(200).json({
                 "status": "ok",
-                "result": result.data(),
                 "id": result.id
             })
         }).catch(error =>{
@@ -34,7 +33,7 @@ exports.getUser = (req,res,next)=>{
         if(user){
             res.status(200).json({
                 id: user.id,
-                user: user.data()
+                data: user.data()
             })
         }else{
             res.status(404).json({
