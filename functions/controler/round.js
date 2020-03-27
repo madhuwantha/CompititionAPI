@@ -23,7 +23,7 @@ exports.createRound = (req,res,next)=>{
             })
         }).catch(error =>{
             res.status(500).json({
-                status: "Creating user failed!"+err
+                status: "Creating user failed!"+error
             })
         });
     }
@@ -52,7 +52,7 @@ exports.getRounds = (req,res,next)=>{
     })
     .catch(err => {
         res.status(500).json({
-            status: "Fetching rounds failed!"+err
+            status: "Fetching rounds failed!"+error
         })
     });
 }
@@ -81,7 +81,7 @@ exports.getARound = (req,res,next)=>{
         }
     }).catch(error =>{
         res.status(500).json({
-            status: "Fetching round failed!"+err
+            status: "Fetching round failed!"+error
         })
     })
 }

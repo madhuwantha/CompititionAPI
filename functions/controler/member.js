@@ -20,7 +20,7 @@ exports.createMember = (req,res,next)=>{
             })
         }).catch(error =>{
             res.status(500).json({
-                status: "Creating member failed!"+err
+                status: "Creating member failed!"+error
             })
         });
     }
@@ -48,7 +48,7 @@ exports.getMembers = (req,res,next)=>{
     })
     .catch(err => {
         res.status(500).json({
-            status: "Fetching members failed!"+err
+            status: "Fetching members failed!"+error
         })
     });
 }

@@ -21,7 +21,7 @@ exports.createMarkPoint = (req,res,next)=>{
             })
         }).catch(error =>{
             res.status(500).json({
-                status: "Creating newMarkPoint failed!"+err
+                status: "Creating newMarkPoint failed!"+error
             })
         });
     }
@@ -49,7 +49,7 @@ exports.getMarkPoints = (req,res,next)=>{
         }
     }).catch(error =>{
         res.status(500).json({
-            status: "Fetching markpoint failed!"+err
+            status: "Fetching markpoint failed!"+error
         })
     })
 }
@@ -74,7 +74,7 @@ exports.getMarkPointsOfRound = (req,res,next)=>{
         }
     }).catch(error =>{
         res.status(500).json({
-            status: "Fetching MarkPoint failed!"+err
+            status: "Fetching MarkPoint failed!"+error
         })
     })
 }

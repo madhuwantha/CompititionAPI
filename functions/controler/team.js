@@ -21,7 +21,7 @@ exports.createTeam = (req,res,next)=>{
             })
         }).catch(error =>{
             res.status(500).json({
-                status: "Creating team failed!"+err
+                status: "Creating team failed!"+error
             })
         });
     }
@@ -49,7 +49,7 @@ exports.getTeams = (req,res,next)=>{
         }
     }).catch(error =>{
         res.status(500).json({
-            status: "Fetching teams failed!"+err
+            status: "Fetching teams failed!"+error
         })
     })
 }
